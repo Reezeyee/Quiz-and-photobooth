@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Caveat:wght@600;700&family=Fredoka:wght@500;600;700&family=Handlee&family=Quicksand:wght@600;700&display=swap');
+
+:root {
+  /* Paper Notebook Palette */
+  --paper-bg: #fffdf8;
+  --paper-cream: #FAF4E8;
+  --paper-grid: rgba(180, 195, 232, 0.22);
+  --paper-line: rgba(255, 123, 156, 0.18);
+  --paper-margin: rgba(255, 107, 139, 0.35);
+  
+  --pastel-pink: #ffb7c5;
+  --deep-pink: #ff5e85;
+  --lavender: #e8dff5;
+  --lavender-dark: #a29bfe;
+  --baby-blue: #c7ceea;
+  --baby-blue-dark: #74b9ff;
+  --mint-green: #e2f0cb;
+  --mint-green-dark: #55efc4;
+  --peach: #ffd1dc;
+  --soft-yellow: #fff5ba;
+  --sketch-dark: #3a2e2b;
+  --sketch-muted: #7c6c6b;
+  
+  --font-sketch: 'Architects Daughter', 'Caveat', cursive;
+  --font-heading: 'Fredoka', cursive, sans-serif;
+  --font-body: 'Quicksand', sans-serif;
+  --font-script: 'Caveat', cursive;
+  
+  --shadow-paper: 0 14px 38px rgba(58, 46, 43, 0.15), 0 3px 8px rgba(0, 0, 0, 0.06);
+  --radius-paper: 28px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #f7f1e5;
+  /* Cozy Paper Desk Texture with faint dots & grid */
+  background-image: 
+    radial-gradient(#d8c9b5 1.5px, transparent 1.5px),
+    linear-gradient(135deg, #fffbf0 0%, #f4e8d3 100%);
+  background-size: 24px 24px, 100% 100%;
+  color: var(--sketch-dark);
+  min-height: 100vh;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: var(--font-sketch);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Responsive Container Setup */
+main {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 12px;
+}
+
+/* Paper Notebook Card Style (Applies to .paper-card and .glass-card) */
+.paper-card,
+.glass-card {
+  background: var(--paper-bg);
+  /* Notebook Ruled Lines + Red Margin Line + Soft Grid */
+  background-image: 
+    linear-gradient(90deg, transparent 42px, var(--paper-margin) 42px, var(--paper-margin) 44px, transparent 44px),
+    linear-gradient(var(--paper-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--paper-grid) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 28px, 28px 100%;
+  border: 3.5px solid var(--sketch-dark);
+  border-radius: 28px 24px 30px 22px;
+  box-shadow: var(--shadow-paper);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: min(560px, 94vw);
+  margin: 0 auto;
+}
+
+/* Binder Holes on Left Edge of Paper Card */
+.paper-card::before,
+.glass-card::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 24px;
+  bottom: 24px;
+  width: 14px;
+  background-image: radial-gradient(circle, #3a2e2b 4.5px, transparent 5px);
+  background-size: 14px 36px;
+  background-repeat: repeat-y;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Paper Washi Tape Accents */
+.paper-tape-top {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  width: clamp(90px, 25vw, 120px);
+  height: 28px;
+  background: rgba(255, 245, 186, 0.9);
+  border: 2px dashed rgba(58, 46, 43, 0.45);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  z-index: 10;
+  border-radius: 4px;
+}
+
+.paper-tape-left {
+  position: absolute;
+  top: 15px;
+  left: -14px;
+  width: clamp(50px, 15vw, 75px);
+  height: 24px;
+  background: rgba(255, 183, 197, 0.85);
+  transform: rotate(-35deg);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  z-index: 10;
+  border-radius: 4px;
+}
+
+.paper-tape-right {
+  position: absolute;
+  top: 15px;
+  right: -14px;
+  width: clamp(50px, 15vw, 75px);
+  height: 24px;
+  background: rgba(199, 206, 234, 0.85);
+  transform: rotate(35deg);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  z-index: 10;
+  border-radius: 4px;
+}
+
+/* Hand-Drawn Wobbly Sketch Animation */
+@keyframes sketchWiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-1.5deg) scale(1.01); }
+  75% { transform: rotate(1.5deg) scale(0.99); }
+}
+
+.sketch-wiggle {
+  animation: sketchWiggle 3s ease-in-out infinite;
+}
+
+/* Paper Color Accent Variants */
+.theme-mint {
+  border-color: #3a2e2b !important;
+  background-color: #f4fbf0 !important;
+}
+
+.theme-lavender {
+  border-color: #3a2e2b !important;
+  background-color: #f7f3fd !important;
+}
+
+.theme-babyBlue {
+  border-color: #3a2e2b !important;
+  background-color: #f0f5ff !important;
+}
+
+.theme-peach {
+  border-color: #3a2e2b !important;
+  background-color: #fff2f4 !important;
+}
+
+.theme-softYellow {
+  border-color: #3a2e2b !important;
+  background-color: #fffde8 !important;
+}
+
+.theme-pink {
+  border-color: #3a2e2b !important;
+  background-color: #fff0f3 !important;
+}
+
+/* Paper Answer Button / Memo Note Strip */
+.paper-answer-btn {
+  background: #FFFDF8;
+  background-image: linear-gradient(rgba(255, 123, 156, 0.1) 1px, transparent 1px);
+  background-size: 100% 24px;
+  border: 3px solid #3A2E2B !important;
+  border-radius: 20px 18px 22px 16px !important;
+  box-shadow: 0 5px 15px rgba(58, 46, 43, 0.08) !important;
+  position: relative;
+  transition: all 0.25s ease !important;
+  font-family: var(--font-sketch) !important;
+}
+
+.paper-answer-btn:hover {
+  transform: translateY(-2px) rotate(-0.5deg) !important;
+  box-shadow: 0 8px 20px rgba(58, 46, 43, 0.15) !important;
+  background-color: #FFF9EE !important;
+}
+
+.paper-answer-btn.selected {
+  background-color: #F0FDF4 !important;
+  border-color: #3A2E2B !important;
+  box-shadow: 0 8px 24px rgba(46, 125, 50, 0.18) !important;
+}
+
+/* Paper Photobooth Strip */
+.photobooth-strip {
+  background: #FFFDF8;
+  background-image: 
+    linear-gradient(90deg, transparent 20px, rgba(255, 107, 139, 0.2) 20px, rgba(255, 107, 139, 0.2) 21px, transparent 21px),
+    linear-gradient(rgba(180, 195, 232, 0.15) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 24px;
+  border: 4px solid var(--sketch-dark) !important;
+  box-shadow: var(--shadow-paper);
+  border-radius: 24px;
+  position: relative;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pastel-pink);
+  border: 2px solid var(--sketch-dark);
+  border-radius: 10px;
+}
+
+/* Typography */
+.heading-primary {
+  font-family: var(--font-sketch);
+  color: var(--deep-pink);
+  font-size: clamp(1.75rem, 5vw, 2.8rem);
+  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.5px;
+}
+
+.heading-secondary {
+  font-family: var(--font-sketch);
+  color: var(--sketch-dark);
+  font-size: clamp(1.25rem, 3.5vw, 1.7rem);
+}
+
+.text-script {
+  font-family: var(--font-script);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--deep-pink);
+}
+
+/* Mobile Responsiveness Adjustments */
+@media (max-width: 480px) {
+  .paper-card, .glass-card {
+    padding: 32px 18px 24px 18px !important;
+  }
+  .heading-primary {
+    font-size: 1.6rem !important;
+  }
+  .heading-secondary {
+    font-size: 1.2rem !important;
+  }
+}
